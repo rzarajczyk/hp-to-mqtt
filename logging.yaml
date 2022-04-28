@@ -1,0 +1,17 @@
+version: 1
+root:
+  handlers: ["stdout"]
+  level: DEBUG
+loggers:
+  "apscheduler.scheduler":
+    level: ERROR
+  "apscheduler.executors.default":
+    level: WARN
+handlers:
+  stdout:
+    formatter: standard
+    class: logging.StreamHandler
+    level: DEBUG
+formatters:
+  standard:
+    format: "%(levelname)-8s | %(asctime)s | %(threadName)-25s | %(name)s: %(message)s"
