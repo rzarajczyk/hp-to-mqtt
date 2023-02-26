@@ -26,4 +26,5 @@ fetch-interval-seconds: 600 # How often should the printer be checked
 
 hp:
   id: printer-scanner # how will the device be identified in MQTT
+  url: <printer-ip>
 ```
