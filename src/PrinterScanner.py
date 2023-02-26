@@ -1,13 +1,12 @@
 import logging
 
 import requests
-from homie_helpers import Homie, Node, IntProperty, BooleanProperty, State
+from homie_helpers import Homie, Node, IntProperty, State
 
 
 class PrinterScanner:
     def __init__(self, config, mqtt_settings):
         device_id = config['id']
-        self.url = config['url']
 
         self.homie = Homie(mqtt_settings, device_id, "HP PhotoSmart B209a-m", nodes=[
             Node("ink", properties=[
@@ -18,9 +17,6 @@ class PrinterScanner:
             ]),
             Node("status", properties=[
                 IntProperty("pages", name="Printed pages"),
-            ]),
-            Node("scanner", properties=[
-                BooleanProperty("scan", retained=False, set_handler=self.scan)
             ])
         ])
 
@@ -38,7 +34,3 @@ class PrinterScanner:
         except Exception as e:
             logging.getLogger('HPPrinterScanner').warning("Device unreachable: %s" % str(e))
             self.homie.state = State.ALERT
-
-    def scan(self, value):
-        if value:
-            requests.post('%s/scan' % self.url)

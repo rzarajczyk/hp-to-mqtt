@@ -1,4 +1,4 @@
-APScheduler==3.9.1
+APScheduler==3.10.0
 homie-helpers~=0.0.6
-service-bootstrap~=0.0.1
-requests~=2.27.1
+service-bootstrap~=0.0.5
+requests==2.28.2
