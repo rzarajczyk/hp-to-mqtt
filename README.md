@@ -9,7 +9,7 @@ services:
     container_name: hp
     image: rzarajczyk/hp-to-mqtt:latest
     volumes:
-      - ./config/hp-to-mqtt.yaml:/app/config/config.yaml
+      - ./config/hp-to-mqtt.yaml:/app/config.yaml
     restart: unless-stopped
 ```
 
